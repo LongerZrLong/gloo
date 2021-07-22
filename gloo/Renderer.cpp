@@ -4,7 +4,6 @@
 #include <glm/gtx/string_cast.hpp>
 
 #include "Application.h"
-#include "shaders/ShadowShader.h"
 #include "components/ShadingComponent.h"
 #include "debug/PrimitiveFactory.h"
 

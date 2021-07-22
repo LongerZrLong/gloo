@@ -10,14 +10,13 @@ namespace GLOO {
     {
     public:
         BindableBuffer(GLenum target);
-        virtual ~BindableBuffer();
+        ~BindableBuffer() override;
 
         BindableBuffer(const BindableBuffer &) = delete;
         BindableBuffer &operator=(const BindableBuffer &) = delete;
 
         // Allow both move-construct and move-assign.
         BindableBuffer(BindableBuffer &&other) noexcept;
-
         BindableBuffer &operator=(BindableBuffer &&other) noexcept;
 
         void Reset(GLuint handle = 0);

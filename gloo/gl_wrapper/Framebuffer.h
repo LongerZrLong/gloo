@@ -10,7 +10,7 @@ namespace GLOO {
     {
     public:
         Framebuffer();
-        ~Framebuffer();
+        ~Framebuffer() override;
 
         Framebuffer(const Framebuffer &) = delete;
         Framebuffer &operator=(const Framebuffer &) = delete;

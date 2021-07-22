@@ -9,6 +9,7 @@ namespace GLOO {
     public:
         ArcBallCameraNode(float fov = 45.f, float aspect = 0.75f, float distance = 2.f);
 
+        // TODO: Optimize the Update method of ArcBallCamera
         void Update(double delta_time) override;
 
         void Calibrate();

@@ -2,7 +2,6 @@
 
 #include <stdexcept>
 
-#include "BindGuard.h"
 #include "gloo/utils.h"
 
 namespace GLOO {

@@ -22,7 +22,7 @@ namespace GLOO {
     {
     public:
         VertexArray();
-        ~VertexArray();
+        ~VertexArray() override;
 
         VertexArray(const VertexArray &) = delete;
         VertexArray &operator=(const VertexArray &) = delete;

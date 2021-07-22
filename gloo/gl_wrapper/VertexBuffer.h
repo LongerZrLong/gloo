@@ -16,6 +16,7 @@ namespace GLOO {
     {
     public:
         VertexBuffer(GLenum usage);
+        ~VertexBuffer() override = default;
 
         void Update(const std::vector<T> &array);
 
@@ -25,6 +26,7 @@ namespace GLOO {
         size_t size_;
         GLenum usage_;
     };
+
 
     template<class T, GLenum target>
     VertexBuffer<T, target>::VertexBuffer(GLenum usage)
@@ -36,8 +38,7 @@ namespace GLOO {
     void VertexBuffer<T, target>::Update(const std::vector<T> &array)
     {
         BindGuard bg(this);
-        GL_CHECK(
-                glBufferData(target_, sizeof(T) * array.size(), array.data(), usage_));
+        GL_CHECK(glBufferData(target_, sizeof(T) * array.size(), array.data(), usage_));
         size_ = array.size();
     }
 
