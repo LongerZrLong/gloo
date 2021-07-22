@@ -27,6 +27,7 @@ namespace GLOO {
         // TODO: you may want to initialize your framebuffer and texture(s) here.
 
         plain_texture_shader_ = make_unique<PlainTextureShader>();
+        shadow_shader_ = make_unique<ShadowShader>();
 
         shadow_depth_tex_ = make_unique<Texture>();
         shadow_depth_tex_->Reserve(GL_DEPTH_COMPONENT, kShadowWidth, kShadowHeight, GL_DEPTH_COMPONENT, GL_FLOAT);
@@ -106,13 +107,12 @@ namespace GLOO {
         {
             auto robj_ptr = pr.first;
             SceneNode &node = *robj_ptr->GetNodePtr();
-            auto shader = make_unique<ShadowShader>();
 
-            BindGuard shader_bg(shader.get());
+            BindGuard shader_bg(shadow_shader_.get());
 
             // Set various uniform variables in the shaders.
-            shader->SetTargetNode(node, pr.second);
-            shader->SetW2LNDCMatrix(kLightProjection *
+            shadow_shader_->SetTargetNode(node, pr.second);
+            shadow_shader_->SetW2LNDCMatrix(kLightProjection *
                                     glm::inverse(light_comp_ptr->GetNodePtr()->GetTransform().GetLocalToWorldMatrix()));
 
             robj_ptr->Render();

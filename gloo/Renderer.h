@@ -43,6 +43,8 @@ namespace GLOO {
         std::unique_ptr<Framebuffer> shadow_frame_buffer_;
         std::unique_ptr<Texture> shadow_depth_tex_;
         std::unique_ptr<PlainTextureShader> plain_texture_shader_;
+        std::unique_ptr<ShadowShader> shadow_shader_;
+
         Application &application_;
     };
 
