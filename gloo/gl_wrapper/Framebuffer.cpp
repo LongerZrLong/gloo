@@ -43,9 +43,8 @@ namespace GLOO {
     void Framebuffer::AssociateTexture(const Texture &texture, GLenum attachment)
     {
         Bind();
-        // TODO: call glFramebufferTexture2D with correct arguments.
-        // Make sure you use GL_CHECK to detect potential errors.
 
+        // Make sure you use GL_CHECK to detect potential errors.
         GL_CHECK(glFramebufferTexture2D(GL_FRAMEBUFFER,
                                         attachment,
                                         GL_TEXTURE_2D,

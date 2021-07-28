@@ -64,14 +64,6 @@ namespace GLOO {
         std::shared_ptr<PhongShader> shader = std::make_shared<PhongShader>();
         std::shared_ptr<VertexObject> vertex_obj = std::move(mesh_data.vertex_obj);
 
-        // TODO: Create the SceneNodes. All objects in the scene will share a
-        // VertexObject. Each object is represented as a "group" within
-        // mesh_data.groups. You will need to create a SceneNode for each object and
-        // create a ShadingComponent and a RenderingComponent for it before adding the
-        // node to the scene tree. You will also need to set the draw range of the
-        // RenderingComponent to start at start_face_index of each group, with the
-        // number of indices equal to num_indices of the group.
-
         for (auto &mesh_group : mesh_data.groups)
         {
             auto scene_ptr = make_unique<SceneNode>();

@@ -106,7 +106,7 @@ namespace GLOO {
     void Application::RenderGUI()
     {
         ImGui::Render();
-        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());  // TODO
+        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
     }
 
     void Application::DestroyGUI()

@@ -68,13 +68,6 @@ namespace GLOO {
         SetUniform("material.specular", material_ptr->GetSpecularColor());
         SetUniform("material.shininess", material_ptr->GetShininess());
 
-        // TODO: bind the ambient, diffuse, and specular textures from the material
-        // (if there's any) to separate texture units (e.g. 0, 1, 2) and then set the
-        // shader properly to use these texture units. You may find it helpful (not
-        // required) to create some boolean flags in the shader to set whether the
-        // texture of each type is enabled (e.g. bool ambient_enabled). Please also
-        // take care of the cases where some of textures is nullptr.
-
         if (material_ptr->GetAmbientTexture() != nullptr)
         {
             SetUniform("ambient_texture_flag", true);
@@ -163,9 +156,6 @@ namespace GLOO {
             const Texture &shadow_texture,
             const glm::mat4 &world_to_light_ndc_matrix) const
     {
-        // TODO: set necessary uniforms for the shader and bind the texture to the
-        // corresponding texture unit.
-
         shadow_texture.BindToUnit(4);
         SetUniform("shadow_texture", 4);
         SetUniform("world_to_light_ndc_matrix", world_to_light_ndc_matrix);

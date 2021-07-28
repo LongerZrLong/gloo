@@ -23,7 +23,6 @@ namespace GLOO {
     Renderer::Renderer(Application &application) : application_(application)
     {
         UNUSED(application_);
-        // TODO: you may want to initialize your framebuffer and texture(s) here.
 
         plain_texture_shader_ = make_unique<PlainTextureShader>();
         shadow_shader_ = make_unique<ShadowShader>();
@@ -57,8 +56,7 @@ namespace GLOO {
     {
         SetRenderingOptions();
         RenderScene(scene);
-        // TODO: When debugging your shadow map, call DebugShadowMap to render a
-        // quad at the bottom left corner to display the shadow map.
+
         DebugShadowMap();
     }
 
@@ -141,8 +139,8 @@ namespace GLOO {
             // Here we first do a depth pass (note that this has nothing to do with the
             // shadow map). The goal of this depth pass is to exclude pixels that are
             // not really visible from the camera, in later rendering passes. You can
-            // safely leave this pass here without understanding/modifying it, for
-            // assignment 5. If you are interested in learning more, see
+            // safely leave this pass here without understanding/modifying it. If you
+            // are interested in learning more, see:
             // https://www.khronos.org/opengl/wiki/Early_Fragment_Test#Optimization
 
             GL_CHECK(glDepthMask(GL_TRUE));
@@ -175,11 +173,6 @@ namespace GLOO {
         // The real shadow map/Phong shading passes.
         for (size_t light_id = 0; light_id < light_ptrs.size(); light_id++)
         {
-            // TODO: render the shadow map viewed from the light.
-            // This should be rendered to the shadow framebuffer instead of the default
-            // one. You should only render shadow if the light can cast shadow (e.g.
-            // directional light).
-
             RenderShadow(light_ptrs[light_id], rendering_info);
 
             GL_CHECK(glDepthMask(GL_FALSE));
@@ -207,8 +200,6 @@ namespace GLOO {
 
                 LightComponent &light = *light_ptrs.at(light_id);
                 shader->SetLightSource(light);
-                // TODO: pass in the shadow texture to the shader via SetShadowMapping if
-                // the light can cast shadow.
 
                 if (light_ptrs[light_id]->CanCastShadow())
                 {
